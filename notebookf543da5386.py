@@ -100,7 +100,7 @@ print("\nDataset Loaded Successfully!")
 # ==========================================
 
 print("First Five Rows")
-display(df.head())
+st.dataframe(df.head())
 
 print("\nLast Five Rows")
 display(df.tail())
