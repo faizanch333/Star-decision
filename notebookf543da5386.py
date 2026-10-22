@@ -103,7 +103,7 @@ print("First Five Rows")
 st.dataframe(df.head())
 
 print("\nLast Five Rows")
-display(df.tail())
+st.dataframe(df.tail())
 
 # ==========================================
 # Dataset Shape
