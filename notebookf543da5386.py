@@ -435,6 +435,16 @@ if target_column is not None:
             X[col] = X[col].fillna(X[col].mode()[0])
 
         else:
+           # Handle missing values correctly
+for col in X.columns:
+    if X[col].isnull().any():
+        if X[col].dtype in ["object", "str", "string", "category"]:
+            # Fill text columns with their most frequent value
+            mode_values = X[col].mode(dropna=True)
+            fill_value = mode_values.iloc[0] if not mode_values.empty else "Unknown"
+            X[col] = X[col].fillna(fill_value)
+        else:
+            # Fill numeric columns with their median
             X[col] = X[col].fillna(X[col].median())
 
     # Encode categorical features
