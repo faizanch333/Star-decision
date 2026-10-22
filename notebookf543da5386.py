@@ -37,7 +37,13 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
 
 import pandas as pd
 
-df = pd.read_csv("/kaggle/input/datasets/henryshan/starbucks/starbucks.csv")
+import pandas as pd
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "starbucks.csv"
+
+df = pd.read_csv(DATA_PATH)
 
 print("Dataset loaded successfully!")
 df.head()
