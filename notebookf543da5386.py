@@ -161,7 +161,7 @@ st.dataframe(df.describe())
 
 print("\nIncluding Categorical Variables\n")
 
-display(df.describe(include="all"))
+st.dataframe(df.describe(include="all"))
 
 # ==========================================
 # Numerical and Categorical Columns
