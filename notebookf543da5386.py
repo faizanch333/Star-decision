@@ -76,7 +76,22 @@ df = pd.read_csv(DATA_PATH)
 print("Dataset Found:")
 print(csv_path)
 
+from pathlib import Path
+import pandas as pd
+import streamlit as st
+
+BASE_DIR = Path(__file__).resolve().parent
+csv_path = BASE_DIR / "starbucks.csv"
+
+if not csv_path.is_file():
+    st.error(f"CSV file not found: {csv_path}")
+    st.stop()
+
 df = pd.read_csv(csv_path)
+
+st.success("Starbucks dataset loaded successfully!")
+st.write("Dataset shape:", df.shape)
+st.dataframe(df.head())
 
 print("\nDataset Loaded Successfully!")
 
