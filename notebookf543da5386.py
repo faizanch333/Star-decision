@@ -157,7 +157,7 @@ print("Duplicate Rows:", duplicates)
 # Descriptive Statistics
 # ==========================================
 
-display(df.describe())
+st.dataframe(df.describe())
 
 print("\nIncluding Categorical Variables\n")
 
