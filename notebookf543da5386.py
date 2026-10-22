@@ -60,7 +60,18 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
             csv_path = os.path.join(dirname, filename)
 
 if csv_path is None:
-    raise FileNotFoundError("starbucks.csv not found in /kaggle/input")
+    from pathlib import Path
+import pandas as pd
+import streamlit as st
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "starbucks.csv"
+
+if not DATA_PATH.exists():
+    st.error(f"Dataset not found. Expected file at: {DATA_PATH}")
+    st.stop()
+
+df = pd.read_csv(DATA_PATH)
 
 print("Dataset Found:")
 print(csv_path)
